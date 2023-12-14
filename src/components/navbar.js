@@ -24,11 +24,7 @@ const Navbar = () => {
             <li><button className={styles.navBtn}  onClick ={() => router.push('../articles/add')}>Tags</button></li>
             <li><button className={styles.navBtn}  onClick ={() => router.push('../articles/add')}>More...</button></li>        
           </ul>
-          
-            
-            
-            
-           
+
         </nav> */}
 
       <nav className={styles.navbar}> 
@@ -36,7 +32,6 @@ const Navbar = () => {
           <h1>Genelia</h1>
         </div>
 
-        
         <ul className={styles.navBtnList}>
           <li><a className={styles.navBtn} href="">Style Guides</a></li>
           <li><a className={styles.navBtn}  href="">Features</a></li>

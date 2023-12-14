@@ -3,9 +3,7 @@ import {useRouter} from 'next/router';
 import React, {useState, useEffect} from 'react'
 import { FaFacebook, FaTwitter, FaRss, FaVimeoV} from "react-icons/fa";
 
-
 const Login = () => {
-
 
     useEffect(() => {
         document.body.style.margin=0;
@@ -15,11 +13,7 @@ const Login = () => {
 
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
-
-    
-
     const [error,setError] = useState(false)
-
 
     const router = useRouter();
 
@@ -31,9 +25,6 @@ const Login = () => {
     const loginUser = (e) => {
         e.preventDefault();
 
-
-
-
         if(email.length==0 || password.length==0){
             alert("Enter your email and password!");
             clearInputs();
@@ -41,7 +32,6 @@ const Login = () => {
         }
         getUser();
         clearInputs();
-        
     }
 
     const getUser = () => {
@@ -65,55 +55,11 @@ const Login = () => {
     }
 
   return (
-    // <div className={styles.allPage}>
-    //     <div className={styles.container}>
-    //         <form className={styles.loginForm}>
-    //             <h2 className={styles.h2}>Login</h2>
-
-    //             <div className={styles.invalid}>
-    //                 <p>Opps! Your email or password is wrong!</p>
-    //             </div>
-
-                // <div className={styles.row}>
-                //     <label className={styles.label}>Email</label>
-                //     <input 
-                //             id="email" 
-                //             type="email" 
-                //             name="email" 
-                //             className={styles.input}
-                //             value= {email} 
-                //             onChange = {(e) => setEmail(e.target.value)} 
-                //     />
-                // </div>
-
-                // <div className={styles.row}>
-                //     <label className={styles.label}>Password</label>
-                //     <input 
-                //         id="password" 
-                //         type="password" 
-                //         name="password" 
-                //         className={styles.input}
-                //         value= {password} 
-                //         onChange = {(e) => setPassword(e.target.value)} 
-                //     />
-                // </div>
-
-    //             <div className={styles.btnDiv}>
-    //                 <button className={styles.submitBtn}
-    //                 onClick ={loginUser}>Submit</button>
-    //             </div>
-
-    //         </form>
-       
-    //     </div>
-    // </div>
     
     <div className={styles.container}>
         <div className={styles.formSec}>
             <form className={styles.loginForm}>
                 <h1>Genelia</h1>
-
-                
 
                <div className={styles.welcomeText}>
                     <p>Welcome back!</p>
@@ -147,7 +93,6 @@ const Login = () => {
                     <p>Opps! Your email or password is wrong!</p>
                 </div>
 
-
                 <div className="row">
                     <button className={styles.loginBtn} onClick ={loginUser}>Login</button>
                 </div>
@@ -156,7 +101,6 @@ const Login = () => {
                     <p>Don't have an account yet? <a href="./signup">Sign up</a></p>
                 </div>
                 
-
                 <div className={styles.social}>
                     
                     <div className={styles.socialIcon}>
@@ -181,14 +125,9 @@ const Login = () => {
 
         </div>
 
-
-        <div className={styles.imgSec}>
-            
-        </div>
+        <div className={styles.imgSec}></div>
 
     </div>
-
-    
   )
 }
 export default Login

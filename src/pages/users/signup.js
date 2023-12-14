@@ -5,8 +5,6 @@ import { FaFacebook, FaTwitter, FaRss, FaVimeoV} from "react-icons/fa";
 
 const SignUp = () => {
 
-
-
     useEffect(() => {
         document.body.style.margin=0;
         document.body.style.padding=0;
@@ -18,13 +16,10 @@ const SignUp = () => {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
 
-
     const regName = /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/;
     const regSurname = /^([a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?)/;
     const regEmail=/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/g;
     const regPassword= /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8}$/;
-
-
 
     const [errors,setErrors] = useState({
         nameError:true,
@@ -40,7 +35,6 @@ const SignUp = () => {
     useEffect(() => {
         setErrors({...errors, surnameError:surname.length<=0 || regSurname.test(surname)})
     }, [surname]);
-
 
     useEffect(() => {
         setErrors({...errors, emailError:email.length<=0 || !regEmail.test(email)})
@@ -74,6 +68,7 @@ const SignUp = () => {
         }
         return true
     }
+
     const validateEmail = () => {
         if (surname=="" || !regEmail.test(email)){
             return false
@@ -91,16 +86,12 @@ const SignUp = () => {
     const signupUser = (e) =>{
         e.preventDefault();
         
-
         if(validateName()&& validateSurname() && validateEmail()&& validatePassword() ){
-
             postUsers();
         }else{
-            
            clearInputs();
         }
 
-        
     }
     function getId() {
         return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, c =>
@@ -108,10 +99,7 @@ const SignUp = () => {
         );
     }
   
-
-
    const postUsers = () => {
-        console.log("ba")
 
         fetch("https://650070e218c34dee0cd4e872.mockapi.io/users", {
             method:"POST",
@@ -125,81 +113,12 @@ const SignUp = () => {
             headers: {
                 "Content-type": "application/json ; charset=UTF-8"
             }
-
         })
         .then (response => response.json())
         .then(() => router.push('/users/login'))
-        
-   }
+    }
 
     return (
-        // <div className={styles.page}>
-        //     <div className={styles.container}>
-        //         <form className={styles.signUpForm}>
-        //             <h2 className={styles.h2}>Sign Up</h2>
-
-        //             <div className={styles.row}>
-        //                 <label className={styles.label}>First Name</label>
-        //                 <input
-        //                     className={styles.input}
-        //                     value={firstName}
-        //                     onChange={(e) => setFirstName(e.target.value)} />
-        //                 {
-        //                 errors.nameError && <p className={styles.invalid}>*Please, enter a valid first name !</p>
-        //                 }
-
-        //             </div>
-
-        //             <div className={styles.row}>
-        //                 <label className={styles.label}>Last Name</label>
-        //                 <input
-        //                     className={styles.input}
-        //                     value={surname}
-        //                     onChange={(e) => setSurname(e.target.value)} />
-        //                 {
-        //                 errors.surnameError && <p className={styles.invalid}>*Please, enter a valid last name !</p>
-        //                 }
-        //             </div>
-
-
-        //             <div className={styles.row}>
-        //                 <label className={styles.label}>Email</label>
-        //                 <input
-        //                     id="email"
-        //                     type="email"
-        //                     name="email"
-        //                     className={styles.input}
-        //                     value={email}
-        //                     onChange={(e) => setEmail(e.target.value)} />
-        //                 {
-        //                 errors.emailError && <p className={styles.invalid}>*Please, enter a valid email !</p>
-        //                 }
-
-        //             </div>
-
-        //             <div className={styles.row}>
-        //                 <label className={styles.label}>Password</label>
-        //                 <input
-        //                     id="password"
-        //                     type="password"
-        //                     name="password"
-        //                     className={styles.input}
-        //                     value={password}
-        //                     onChange={(e) => setPassword(e.target.value)} />
-        //                 {
-        //                 errors.passwordError && <p className={styles.invalid}>*Your password must contain at least one letter, one numberic digit and must be 8 characters.</p>
-        //                 }
-        //             </div>
-
-        //             <div className={styles.btnDiv}>
-        //             <button
-        //                 className={styles.submitBtn}
-        //                 onClick={signupUser}>Submit</button>
-        //             </div>
-
-        //         </form>
-        //     </div>
-        // </div>
         <div className={styles.container}>
             <div className={styles.formSec}>
                 <form className={styles.loginForm}>
@@ -228,14 +147,10 @@ const SignUp = () => {
                             value={surname}
                             onChange={(e) => setSurname(e.target.value)} 
                         />
-
                         {
                         errors.surnameError && <p className={styles.invalid}>*Please, enter a valid last name !</p>
                         }
                     </div>
-
-
-
 
                     <div className="row">
                         <input 
@@ -267,10 +182,6 @@ const SignUp = () => {
                         }
                     </div>
 
-                    
-
-                    
-
                     <div className="row">
                         <button className={styles.loginBtn} onClick={signupUser}>Signup</button>
                     </div>
@@ -279,7 +190,6 @@ const SignUp = () => {
                         <p>Already have an account? <a href="./login">Sign in</a></p>
                     </div>
                 
-
                     <div className={styles.social}>
                     
                         <div className={styles.socialIcon}>
@@ -304,11 +214,8 @@ const SignUp = () => {
 
             </div>
 
-
-            <div className={styles.imgSec}>
+            <div className={styles.imgSec}></div>
             
-            </div>
-
         </div>
     )
   }
