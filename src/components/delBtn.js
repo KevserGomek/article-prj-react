@@ -7,12 +7,12 @@ const DelBtn = (props) => {
   const router = useRouter()
   const removeArticle = (id) => {
 
-    const url = "https://650070e218c34dee0cd4e872.mockapi.io/articles/"+id;
+    const url = "http://localhost:3001/articles/"+id;
 
     fetch(url, {
       method:"DELETE",
     })
-    .then(response => response.json())
+    .then(response => console.log(response))
     .then(()=> {
       props.getArticles();
     })

@@ -12,7 +12,7 @@ const ArticleCard = () => {
     }, []);
 
     const getArticles = useCallback(async () => {
-        const articleResponse = await fetch("https://650070e218c34dee0cd4e872.mockapi.io/articles");
+        const articleResponse = await fetch("http://localhost:3001/articles");
         const articles = await articleResponse.json();
         setArticles(articles)
     })

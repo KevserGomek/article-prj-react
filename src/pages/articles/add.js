@@ -42,10 +42,10 @@ const AddArticle = () => {
             (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
         );
     }
-
+    
     const postArticles = () => {
 
-        fetch("https://650070e218c34dee0cd4e872.mockapi.io/articles", {
+        fetch("http://localhost:3001/articles", {
             method:"POST",
             body: JSON.stringify ({
                 id: getId(),

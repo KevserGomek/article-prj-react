@@ -8,13 +8,16 @@ const ViewArticle = () => {
     const [selectedArticle, setSelectedArticle] = useState([])
 
     const getSelectedArticle = useCallback(async () => {
-        const url ="https://650070e218c34dee0cd4e872.mockapi.io/articles";
+        const url ="http://localhost:3001/articles";
         const urlParams = new URLSearchParams(window.location.search);
         const id = urlParams.get('id');
+       
 
-        const articleResponse = await fetch("https://650070e218c34dee0cd4e872.mockapi.io/articles/"+id);
+        const articleResponse = await fetch("http://localhost:3001/articles/"+id);
         const selectedArticle = await articleResponse.json();
         setSelectedArticle(selectedArticle)
+
+        console.log(selectedArticle)
     })
 
     useEffect(() => {

@@ -7,7 +7,7 @@ const EditArticle = () => {
 
     const router = useRouter();
 
-    const url ="https://650070e218c34dee0cd4e872.mockapi.io/articles";
+    const url ="http://localhost:3001/articles";
     const urlParams = new URLSearchParams(window.location.search);
     const id = urlParams.get('id');
 
@@ -24,7 +24,7 @@ const EditArticle = () => {
     
     const renderItems = () => {
 
-        fetch("https://650070e218c34dee0cd4e872.mockapi.io/articles/"+id)
+        fetch("http://localhost:3001/articles/"+id)
             .then(response => response.json())
             .then((json)=> {
                 setValues({...values, title:json.title, description:json.description})
@@ -36,7 +36,7 @@ const EditArticle = () => {
     const updateArticle = (e) => {
         e.preventDefault();
 
-        fetch("https://650070e218c34dee0cd4e872.mockapi.io/articles/"+id, {
+        fetch("http://localhost:3001/articles/"+id, {
             method:"PUT",
             body: JSON.stringify (values),
             headers: {

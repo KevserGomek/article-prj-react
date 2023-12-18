@@ -13,7 +13,7 @@ const ListArticle = () => {
 
     const getArticles = () => {
         
-        fetch("https://650070e218c34dee0cd4e872.mockapi.io/articles")
+        fetch("http://localhost:3001/articles")
             .then (response => response.json())
             .then((json) => {
                 setArticles(json)
