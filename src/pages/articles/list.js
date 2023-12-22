@@ -1,57 +1,37 @@
 import Navbar from "../../components/navbar"
+import Footer from "@/components/footer"
 import styles from '../../styles/list.module.css'
-import React, {useState, useEffect} from 'react'
-import Buttons from "@/components/buttons"
+import React, {useEffect} from 'react'
+import ArticleRow from "@/components/articleRow"
+import { MdAddCircle } from "react-icons/md"
+import { useRouter } from 'next/router'
 
 const ListArticle = () => {
 
-    const [articles, setArticles] = useState([])
+    const router = useRouter()
 
     useEffect(() => {
-        getArticles();
-    }, []);
-
-    const getArticles = () => {
-        
-        fetch("http://localhost:3001/articles")
-            .then (response => response.json())
-            .then((json) => {
-                setArticles(json)
-            })
-   }
+        document.body.style.margin=0;
+        document.body.style.padding=0;
+      }, []);
 
     return (
-        <div className={styles.allPage}>
+        <>
             <Navbar/>
-           
-            <div className={styles.container}>
-                <div className={styles["article-container"]}>
-                    <h2>The Article List</h2>
-                
-                    <div className={styles["table-section"]}>
-                        <table id={styles["article-list"]}>
-                            <tbody>
-                                <tr className={styles["table-titles"]}>
-                                    <th>Title</th>
-                                    <th>Description</th>
-                                    <th className={styles["buttons"]}>Buttons</th>
-                                </tr>
 
-                                {articles.map ((article, i) => (
-                                    <tr className={styles["article-information"]} key={i}>
-                                        <td>{article.title}</td>
-                                        <td>{article.description}</td>
-                                        <td><Buttons articleId={article.dataId}
-                                                     getArticles={getArticles}>
-                                            </Buttons></td> 
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
+            <div className={styles.container}>
+                
+                <div className={styles.header}>
+                    <h2> ALL ARTICLES </h2>
+                    <span className={styles.addBtn} onClick ={() => router.push('../articles/add')}> <MdAddCircle /></span>
                 </div>
+                
+                <ArticleRow/>
+    
             </div>
-        </div>
+
+            <Footer/>
+        </>
     )
 }
 export default ListArticle

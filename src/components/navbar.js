@@ -7,25 +7,8 @@ const Navbar = () => {
 
   const router = useRouter()
 
- 
-    
   return (
     <div>
-        {/* <nav className={styles.navbar}>
-          <div>
-            <h1 className={styles.title}>Genelia</h1>
-          </div>
-            
-          
-          <ul>
-            <li><button className={styles.navBtn} onClick={() => router.push('../articles/list')}>Style Guides</button></li>
-            <li><button className={styles.navBtn}  onClick ={() => router.push('../articles/add')}>Features</button></li>
-            <li><button className={styles.navBtn}  onClick ={() => router.push('../articles/add')}>Membership</button></li>
-            <li><button className={styles.navBtn}  onClick ={() => router.push('../articles/add')}>Tags</button></li>
-            <li><button className={styles.navBtn}  onClick ={() => router.push('../articles/add')}>More...</button></li>        
-          </ul>
-
-        </nav> */}
 
       <nav className={styles.navbar}> 
         <div className={styles.navbarTitle}>
@@ -45,8 +28,8 @@ const Navbar = () => {
           <li><MdOutlineDarkMode className={styles.themeBtn} /></li>
           <li><FaSignInAlt className={styles.loginBtn} onClick={() => router.push('../users/login')}/></li>
         </ul>
-        
       </nav>
+
     </div>
   )
 }

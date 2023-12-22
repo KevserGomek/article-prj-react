@@ -35,7 +35,7 @@ const Login = () => {
     }
 
     const getUser = () => {
-        fetch("https://650070e218c34dee0cd4e872.mockapi.io/users", {
+        fetch("http://localhost:3001/users", {
             method:"GET",
         })
         .then (response => response.json())
@@ -44,11 +44,9 @@ const Login = () => {
                 user.email === email && user.password===password);
            
             if(registeredUser.length !== 0){
-                
                 router.push('/')
             }else {
                 setError(!error)
-                
                 clearInputs();
             }
         })  

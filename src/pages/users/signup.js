@@ -101,11 +101,11 @@ const SignUp = () => {
   
    const postUsers = () => {
 
-        fetch("https://650070e218c34dee0cd4e872.mockapi.io/users", {
+        fetch("http://localhost:3001/users", {
             method:"POST",
             body: JSON.stringify ({
                 id: getId(),  
-                firstName:firstName,
+                firstname:firstName,
                 surname:surname,
                 email:email,
                 password:password

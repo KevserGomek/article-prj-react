@@ -1,6 +1,6 @@
 import Navbar from "../../components/navbar"
 import styles from '../../styles/add.module.css'
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useRouter } from 'next/router'
 
 const EditArticle = () => {
@@ -12,7 +12,7 @@ const EditArticle = () => {
     const id = urlParams.get('id');
 
     const [values, setValues] = useState({
-        dataId: id,
+        dataid: id,
         title:'',
         description:''
     })
@@ -21,7 +21,6 @@ const EditArticle = () => {
         renderItems();
     }, []);
 
-    
     const renderItems = () => {
 
         fetch("http://localhost:3001/articles/"+id)
@@ -31,7 +30,6 @@ const EditArticle = () => {
                   
             })
     }
-
 
     const updateArticle = (e) => {
         e.preventDefault();
@@ -63,7 +61,6 @@ const EditArticle = () => {
                     </div>
           
                     <div className={styles.formRow}>
-                    <div className={styles.formRow}>
                         <textarea 
                             id={styles["description"]} 
                             name="description" 
@@ -71,8 +68,7 @@ const EditArticle = () => {
                             onChange = {(e) => setValues({...values,description:e.target.value})} 
                         />
                     </div>
-                    </div>
-          
+                    
                     <div className={styles.formRow}>
                         <input 
                             type="file" 

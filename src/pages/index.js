@@ -46,7 +46,7 @@ export default function Home() {
             <h2 className={styles.title}>LATEST POSTS</h2>
           </div>
           <div className={styles.viewAllSec}>
-            <a className={styles.viewAllBtn} href="">VIEW ALL</a>
+            <a className={styles.viewAllBtn} href="/articles/list">VIEW ALL</a>
           </div>
         </div>
         <ArticleCard />

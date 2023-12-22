@@ -29,7 +29,7 @@ const ArticleCard = () => {
                     <div className={styles.postImg}><img src={article.image} class={styles.articleImg} onClick={()=> goToViewPage(article.dataId)}></img></div>
                     <div className={styles.postAuthor}></div>
                     <div className={styles.postTitle}>
-                        <p className={styles.articleTitle} onClick={()=> goToViewPage(article.dataId)}>{article.title}</p></div>                    
+                        <p className={styles.articleTitle} onClick={()=> goToViewPage(article.dataid)}>{article.title}</p></div>                    
                 </div>
             ))}
         </div>

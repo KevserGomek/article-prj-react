@@ -1,7 +1,8 @@
 import Navbar from "../../components/navbar"
 import styles from '../../styles/add.module.css'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useRouter } from 'next/router'
+import Footer from "@/components/footer"
 
 const AddArticle = () => {
 
@@ -11,13 +12,17 @@ const AddArticle = () => {
 
     const router = useRouter();
 
+    useEffect(() => {
+        document.body.style.margin=0;
+        document.body.style.padding=0;
+      }, []);
+
     const add = (e) => {
         e.preventDefault();
         
         if(image.length ==0){
             confirm("Are you sure you don't want to upload an image?");
         }
-
 
         if(title.length !== 0 && description.length !==0){
             postArticles();
@@ -104,6 +109,8 @@ const AddArticle = () => {
                     </div>
                 </form>
             </div>
+
+            <Footer/>
         </div>
     )
 }
