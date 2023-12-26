@@ -1,17 +1,50 @@
 import styles from '../styles/index.module.css'
 import Navbar from '@/components/navbar';
-import React, {useEffect} from 'react'
+import React, {useEffect, useState, useCallback} from 'react'
 import { FaStarOfLife, FaRegSnowflake } from "react-icons/fa6";
 import { IoIosLogIn } from "react-icons/io";
 import { BsFillHexagonFill } from "react-icons/bs";
 import ArticleCard from '@/components/articleCard';
 import Footer from '@/components/footer';
+import {useRouter} from 'next/router';
 
 export default function Home() {
   useEffect(() => {
     document.body.style.margin=0;
     document.body.style.padding=0;
   }, []);
+
+
+//articleCard
+  const router = useRouter()
+  const [articles, setArticles] = useState([])
+  const [offset, setOffset] = useState(0);
+  const [limit, setLimit] = useState(3);
+  const getArticles = async () => {
+    try {
+      const response = await fetch(`http://localhost:3001/page?offset=${offset}&limit=${limit}`);
+      const jsonArticles = await response.json();
+      setArticles([...articles, ...jsonArticles]);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  useEffect(() => {
+    getArticles();
+  }, [offset]);
+  const handleLoadMore = () => {
+    setOffset(offset + limit);
+  };
+  const goToViewPage = (id) =>{
+    const url = new URL('http://localhost:3000/articles/view?id='+id);
+    console.log(id)
+    router.push(url)
+  }
+//articleCard
+
+
+
+
 
   return (
   <>
@@ -49,9 +82,21 @@ export default function Home() {
             <a className={styles.viewAllBtn} href="/articles/list">VIEW ALL</a>
           </div>
         </div>
-        <ArticleCard />
+
+
+        <div className={styles.allPosts}>
+            {articles.map ((item, i) => (
+                <div className={styles.latestPost} key={i}>
+                    <div className={styles.postImg}><img src={item.image} class={styles.articleImg} onClick={()=> goToViewPage(item.dataid)}></img></div>
+                    <div className={styles.postAuthor}>By- {item.firstname} {item.surname}</div>
+                    <div className={styles.postTitle}>
+                        <p className={styles.articleTitle} onClick={()=> goToViewPage(item.dataid)}>{item.title}</p></div>                    
+                </div>
+            ))}
+        </div>
+        {/* <ArticleCard/> */}
         <div className={styles.btnSec}>
-          <button className={styles.loadBtn}>Load More</button>
+          <button className={styles.loadBtn} onClick={handleLoadMore}>Load More</button>
         </div>
       </div>
 

@@ -1,6 +1,6 @@
 import Navbar from "../../components/navbar"
 import styles from '../../styles/add.module.css'
-import React, {useState, useEffect} from 'react'
+import React, {useState, useEffect, useCallback} from 'react'
 import { useRouter } from 'next/router'
 import Footer from "@/components/footer"
 
@@ -9,6 +9,18 @@ const AddArticle = () => {
     const [title,setTitle] = useState('')
     const [description,setDescription] = useState('')
     const [image,setImage] = useState('')
+    const [selectedUserId,setSelectedUserId] = useState('')
+
+    const [users, setUsers] = useState([])
+       useEffect(() => {
+        getUsers();
+    }, []);
+       const getUsers = useCallback(async () => {
+        const userResponse = await fetch("http://localhost:3001/users");
+        const users = await userResponse.json();
+        setUsers(users)
+    })
+
 
     const router = useRouter();
 
@@ -24,12 +36,12 @@ const AddArticle = () => {
             confirm("Are you sure you don't want to upload an image?");
         }
 
-        if(title.length !== 0 && description.length !==0){
+        if(title.length !== 0 && description.length !==0 && selectedUserId.length !==0){
             postArticles();
             clearInputs();
             return false;
         }else{
-            alert("Please, write something! ");
+            alert("Please, write something and you must select author! ");
             clearInputs();
             return false;
         }
@@ -56,7 +68,8 @@ const AddArticle = () => {
                 id: getId(),
                 title:title,
                 description:description,
-                image: image
+                image: image,
+                user_id: selectedUserId
             }),
             headers: {
                 "Content-type": "application/json ; charset=UTF-8"
@@ -91,7 +104,18 @@ const AddArticle = () => {
                             onChange = {(e) => setDescription(e.target.value)} 
                         />
                     </div>
-          
+
+                    <div className={styles.formRow}>
+                        <select className={styles.authorBox}  onChange={(e) => setSelectedUserId(e.target.value)}>
+                            <option value="" disabled selected hidden>The Author</option>
+                            {users.map ((user) => (
+                                <option key={user.dataid} value={user.dataid} >{`${user.firstname} ${user.surname}`}</option>
+                            ))}
+                            
+                        </select>
+                    </div>
+
+
                     <div className={styles.formRow}>
                         <input 
                             type="file" 

@@ -2,6 +2,7 @@ import styles from '../../styles/login.module.css'
 import {useRouter} from 'next/router';
 import React, {useState, useEffect} from 'react'
 import { FaFacebook, FaTwitter, FaRss, FaVimeoV} from "react-icons/fa";
+import md5 from 'md5';
 
 const Login = () => {
 
@@ -14,6 +15,7 @@ const Login = () => {
     const [email,setEmail] = useState('')
     const [password,setPassword] = useState('')
     const [error,setError] = useState(false)
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
 
     const router = useRouter();
 
@@ -41,7 +43,7 @@ const Login = () => {
         .then (response => response.json())
         .then (users => {
             const registeredUser = users.filter(user => 
-                user.email === email && user.password===password);
+                user.email === email && user.password===md5(password));
            
             if(registeredUser.length !== 0){
                 router.push('/')
@@ -50,6 +52,8 @@ const Login = () => {
                 clearInputs();
             }
         })  
+        
+       
     }
 
   return (

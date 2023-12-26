@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     column-gap:40px;
-    margin-left:100px
+    margin-left:100px;
 }
 .latestPost{
     height: 500px;
@@ -16,12 +16,21 @@
     justify-content: center;
     align-items: center;
 }
+.postAuthor{
+    /* background-color: orange; */
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    padding-left: 10px;
+    align-items: center;
+    color:#242424;
+}
 .postTitle{
     height: 120px;
     font-size: 35px;
     font-weight: 500;
     letter-spacing: 0.5px;
-    padding-left: 10px;
+    padding-left: 12px;
     color: #242424;
 }
 .articleImg{
@@ -40,4 +49,32 @@
 .articleTitle:hover{
     text-decoration: underline;
     cursor:pointer;
+}
+
+.btnSec{
+    height: 300px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.loadBtn{
+    height: 70px;
+    width: 280px;
+    background-color: #242424;
+    color:#f6f6f6;
+    font-size: 20px;
+    font-weight: 700;
+    border:1.5px solid #242424;
+    border-radius: 8px;
+}
+.loadBtn:hover{
+    cursor:pointer;
+    background-color: #f6f6f6;
+    color:#242424;
+    transition: 0.5s;
 }

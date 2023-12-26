@@ -2,6 +2,7 @@ import styles from '../../styles/signup.module.css'
 import React, {useState, useEffect} from 'react'
 import {useRouter} from 'next/router';
 import { FaFacebook, FaTwitter, FaRss, FaVimeoV} from "react-icons/fa";
+import md5 from 'md5';
 
 const SignUp = () => {
 
@@ -108,7 +109,7 @@ const SignUp = () => {
                 firstname:firstName,
                 surname:surname,
                 email:email,
-                password:password
+                password:md5(password)
             }),
             headers: {
                 "Content-type": "application/json ; charset=UTF-8"
